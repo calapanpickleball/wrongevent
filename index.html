@@ -1,726 +1,2695 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Wrong Outfit, Wrong Paddle — Calapan City Pickleball Club</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --pink:#ff3d8a;
-    --blue:#2d9cdb;
-    --green:#0b3d2e;
-    --green-light:#134a37;
-    --yellow:#ffd400;
-    --cream:#fff8ed;
-    --ink:#12201a;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:var(--cream);
-    color:var(--ink);
-  }
-  .display{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.5px}
-  .wrap{max-width:900px;margin:auto;padding:0 18px}
 
-  /* ---------- HERO ---------- */
+<style>
+:root{
+  --pink:#ff3d8a;
+  --blue:#2d9cdb;
+  --green:#0b3d2e;
+  --green-light:#134a37;
+  --yellow:#ffd400;
+  --cream:#fff8ed;
+  --ink:#12201a;
+  --gray:#555;
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+}
+
+button,
+input{
+  font-family:'Poppins',sans-serif;
+}
+
+.display{
+  font-family:'Anton',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.wrap{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:0 18px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  background:var(--green);
+  color:var(--cream);
+  padding:38px 18px 48px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:10px solid var(--yellow);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-70px;
+  right:-70px;
+  width:240px;
+  height:240px;
+  background:var(--pink);
+  border-radius:50%;
+  opacity:.25;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  bottom:-100px;
+  left:-80px;
+  width:220px;
+  height:220px;
+  background:var(--blue);
+  border-radius:50%;
+  opacity:.12;
+}
+
+.club-line{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:1px;
+  color:var(--yellow);
+  margin-bottom:10px;
+  text-align:center;
+}
+
+.club-line span.dot{
+  width:6px;
+  height:6px;
+  background:var(--yellow);
+  border-radius:50%;
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  font-size:clamp(48px,11vw,96px);
+  line-height:.86;
+  margin:8px auto 8px;
+  max-width:800px;
+  word-break:normal;
+}
+
+.hero h1 .b1{
+  color:var(--pink);
+}
+
+.hero h1 .b2{
+  color:var(--blue);
+}
+
+.hero h1 .b3{
+  color:var(--yellow);
+  display:block;
+  font-size:.5em;
+  margin-top:12px;
+  line-height:1;
+}
+
+.hero .sub{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  font-weight:600;
+  font-size:17px;
+  line-height:1.5;
+  max-width:600px;
+  margin:18px auto 0;
+  opacity:.9;
+}
+
+.chips{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:24px;
+}
+
+.chip{
+  background:var(--cream);
+  color:var(--green);
+  font-weight:700;
+  font-size:14px;
+  padding:10px 16px;
+  border-radius:30px;
+  border:2px solid var(--yellow);
+  text-align:center;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+  padding:46px 0;
+}
+
+.kicker{
+  display:inline-block;
+  font-weight:700;
+  font-size:13px;
+  color:var(--pink);
+  background:#ffe3ef;
+  padding:6px 13px;
+  border-radius:20px;
+  margin-bottom:11px;
+}
+
+.kicker.blue{
+  color:var(--blue);
+  background:#e4f2fc;
+}
+
+.kicker.green{
+  color:var(--green);
+  background:#e2ede8;
+}
+
+h2.title{
+  font-size:clamp(30px,5vw,40px);
+  margin:0 0 8px;
+  line-height:1.05;
+}
+
+.lede{
+  font-size:16px;
+  line-height:1.65;
+  max-width:700px;
+  color:#333;
+}
+
+/* =========================
+   PHASE OVERVIEW
+========================= */
+
+.phase-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:28px;
+}
+
+.phase-card{
+  border-radius:22px;
+  padding:24px;
+  color:var(--cream);
+  position:relative;
+  transition:transform .25s ease;
+  min-height:190px;
+}
+
+.phase-card.one{
+  background:var(--pink);
+  transform:rotate(-2deg);
+}
+
+.phase-card.two{
+  background:var(--blue);
+  transform:rotate(2deg);
+}
+
+.phase-card:hover{
+  transform:rotate(0) scale(1.02);
+}
+
+.phase-card .tag{
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:1px;
+  opacity:.85;
+}
+
+.phase-card h3{
+  font-size:26px;
+  line-height:1.15;
+  margin:8px 0 10px;
+}
+
+.phase-card p{
+  font-size:14px;
+  line-height:1.55;
+  margin:0;
+}
+
+.phase-card .arrow{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  font-size:22px;
+  opacity:.6;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel{
+  background:#fff;
+  border-radius:24px;
+  padding:28px 26px;
+  margin-top:22px;
+  border:1px solid #eee;
+}
+
+.panel.dark{
+  background:var(--green);
+  color:var(--cream);
+  border:none;
+}
+
+.panel.dark .lede{
+  color:#dce9e2;
+}
+
+.panel.dark h2.title{
+  color:#fff;
+}
+
+/* =========================
+   SAMPLE GRID
+========================= */
+
+.sample-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+
+.sample{
+  background:var(--cream);
+  border-radius:16px;
+  padding:18px 10px;
+  text-align:center;
+  font-weight:600;
+  font-size:13.5px;
+  line-height:1.35;
+  border:2px dashed var(--yellow);
+  transition:transform .2s ease;
+}
+
+.sample:hover{
+  transform:translateY(-4px) rotate(-2deg);
+}
+
+.sample .emoji{
+  font-size:32px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.panel.dark .sample{
+  background:var(--green-light);
+  border-color:var(--yellow);
+  color:var(--cream);
+}
+
+/* =========================
+   RULES
+========================= */
+
+ul.rules{
+  margin:16px 0 0;
+  padding-left:0;
+  list-style:none;
+}
+
+ul.rules li{
+  display:flex;
+  gap:11px;
+  align-items:flex-start;
+  font-size:14.5px;
+  line-height:1.55;
+  margin-bottom:11px;
+}
+
+ul.rules li::before{
+  content:"●";
+  color:var(--pink);
+  font-size:10px;
+  margin-top:7px;
+  flex-shrink:0;
+}
+
+.panel.dark ul.rules li::before{
+  color:var(--yellow);
+}
+
+/* =========================
+   ROUNDS
+========================= */
+
+.round{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  background:var(--cream);
+  border-radius:18px;
+  padding:19px;
+  margin-top:15px;
+}
+
+.round .num{
+  min-width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--yellow);
+  color:var(--ink);
+  display:grid;
+  place-items:center;
+  font-family:'Anton',sans-serif;
+  font-size:20px;
+  flex-shrink:0;
+}
+
+.round h3{
+  margin:0 0 5px;
+  font-size:19px;
+  line-height:1.25;
+}
+
+.round .badge{
+  display:inline-block;
+  background:var(--ink);
+  color:var(--yellow);
+  font-weight:700;
+  font-size:11.5px;
+  padding:4px 9px;
+  border-radius:6px;
+  margin-bottom:7px;
+}
+
+.round p{
+  margin:5px 0;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* =========================
+   AWARDS
+========================= */
+
+.awards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:13px;
+  margin-top:20px;
+}
+
+.award{
+  background:var(--cream);
+  border-radius:16px;
+  padding:17px;
+  border-left:5px solid var(--pink);
+  transition:transform .2s ease;
+  color:var(--ink);
+}
+
+.award:hover{
+  transform:translateY(-3px);
+}
+
+.award.blue-edge{
+  border-left-color:var(--blue);
+}
+
+.award strong{
+  display:block;
+  font-size:15.5px;
+  line-height:1.3;
+  margin-bottom:5px;
+  color:var(--ink);
+}
+
+.award span{
+  font-size:13px;
+  color:#555;
+  line-height:1.45;
+}
+
+/* =========================
+   OPEN PLAY
+========================= */
+
+.openplay-panel{
+  background:linear-gradient(135deg,var(--blue),#1c7fc4);
+  color:#fff;
+  border-radius:24px;
+  padding:30px 26px;
+  margin-top:22px;
+}
+
+.openplay-panel .kicker{
+  background:rgba(255,255,255,.18);
+  color:#fff;
+}
+
+.openplay-panel h2.title{
+  color:#fff;
+}
+
+.openplay-panel .lede{
+  color:#eaf4fb;
+}
+
+.openplay-panel ul.rules li::before{
+  color:var(--yellow);
+}
+
+/* =========================
+   GOLDEN NOTE
+========================= */
+
+.note{
+  border:2px dashed var(--yellow);
+  background:var(--green);
+  color:var(--cream);
+  border-radius:18px;
+  padding:20px;
+  margin-top:24px;
+  text-align:center;
+  font-size:15px;
+  line-height:1.55;
+}
+
+.note strong{
+  color:var(--yellow);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-panel{
+  background:var(--ink);
+  color:var(--cream);
+  border-radius:24px;
+  padding:30px 26px;
+  margin-top:22px;
+}
+
+.form-panel .kicker{
+  background:var(--yellow);
+  color:var(--ink);
+}
+
+.form-panel h2.title{
+  color:#fff;
+}
+
+.form-panel .lede{
+  color:#d8d8d8;
+}
+
+.field{
+  margin-top:19px;
+}
+
+.field label{
+  display:block;
+  font-weight:600;
+  font-size:14px;
+  line-height:1.4;
+  margin-bottom:7px;
+  color:var(--yellow);
+}
+
+.field input[type=text],
+.field input[type=tel]{
+  width:100%;
+  min-height:50px;
+  padding:13px 15px;
+  border-radius:11px;
+  border:none;
+  font-family:'Poppins',sans-serif;
+  font-size:15px;
+  outline:none;
+}
+
+.field input:focus{
+  box-shadow:0 0 0 3px rgba(255,212,0,.35);
+}
+
+.radio-group{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.radio-option{
+  background:var(--green-light);
+  border:2px solid transparent;
+  border-radius:11px;
+  padding:13px;
+  font-size:13.5px;
+  line-height:1.35;
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+  cursor:pointer;
+  min-height:52px;
+}
+
+.radio-option input{
+  accent-color:var(--yellow);
+  margin-top:2px;
+  flex-shrink:0;
+}
+
+.radio-option:has(input:checked){
+  border-color:var(--yellow);
+  background:#1d5943;
+}
+
+.submit-btn{
+  margin-top:24px;
+  width:100%;
+  min-height:54px;
+  background:var(--pink);
+  color:#fff;
+  border:none;
+  padding:14px 16px;
+  border-radius:12px;
+  font-family:'Anton',sans-serif;
+  font-size:19px;
+  letter-spacing:1px;
+  cursor:pointer;
+  text-transform:uppercase;
+}
+
+.submit-btn:hover{
+  background:#e6317a;
+  transform:translateY(-2px);
+}
+
+.deadline-strip{
+  margin-top:17px;
+  background:var(--yellow);
+  color:var(--ink);
+  border-radius:10px;
+  padding:11px 14px;
+  font-weight:700;
+  font-size:13.5px;
+  line-height:1.4;
+  text-align:center;
+}
+
+.contact-line{
+  text-align:center;
+  font-size:13px;
+  line-height:1.5;
+  margin-top:13px;
+  color:#bbb;
+}
+
+.contact-line strong{
+  color:var(--cream);
+}
+
+.status-msg{
+  margin-top:11px;
+  font-size:13.5px;
+  font-weight:600;
+  line-height:1.4;
+  min-height:1.2em;
+}
+
+.status-msg.ok{
+  color:var(--yellow);
+}
+
+.status-msg.err{
+  color:#ff8080;
+}
+
+/* =========================
+   REGISTERED LIST
+========================= */
+
+.registered-list{
+  margin-top:15px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.registrant{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:var(--cream);
+  border-radius:12px;
+  padding:12px 14px;
+  flex-wrap:wrap;
+}
+
+.registrant .name{
+  font-weight:700;
+  font-size:14.5px;
+}
+
+.registrant .program{
+  background:var(--ink);
+  color:var(--yellow);
+  font-size:11.5px;
+  font-weight:700;
+  padding:5px 10px;
+  border-radius:20px;
+}
+
+.empty-note{
+  font-size:14px;
+  color:#666;
+}
+
+/* =========================
+   FREE FOOD
+========================= */
+
+.foodie-panel{
+  background:linear-gradient(135deg,var(--yellow),#ffb400);
+  color:var(--ink);
+  border-radius:24px;
+  padding:25px;
+  margin-top:18px;
+  font-size:15px;
+  line-height:1.6;
+  font-weight:600;
+  border:3px dashed var(--pink);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:var(--green);
+  color:var(--cream);
+  text-align:center;
+  padding:32px 18px 40px;
+}
+
+footer .brand{
+  font-family:'Anton',sans-serif;
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+footer .tags{
+  margin-top:10px;
+  font-size:12.5px;
+  line-height:1.6;
+  letter-spacing:2px;
+  color:var(--yellow);
+  font-weight:700;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes popIn{
+  from{
+    opacity:0;
+    transform:scale(.92) translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+.hero h1{
+  animation:popIn .6s ease both;
+}
+
+.hero .sub{
+  animation:popIn .6s .12s ease both;
+}
+
+.hero .chips{
+  animation:popIn .6s .24s ease both;
+}
+
+.submit-btn,
+.radio-option,
+.phase-card,
+.award,
+.sample{
+  transition-property:transform,background;
+  transition-duration:.2s;
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+/* =========================
+   SPLASH
+========================= */
+
+#splash{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#071f17;
+  overflow:hidden;
+  transition:opacity .6s ease;
+}
+
+#splash::before{
+  content:"";
+  position:absolute;
+  inset:-35px;
+  background:url("poster.jpg") center/cover no-repeat;
+  filter:blur(24px) brightness(.48);
+  transform:scale(1.08);
+}
+
+#splash::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.20);
+}
+
+#splash .splash-poster{
+  position:relative;
+  z-index:2;
+  width:min(88vw,520px);
+  max-height:86vh;
+  height:auto;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+
+#splash.hide{
+  opacity:0;
+  pointer-events:none;
+}
+
+#splash .tap-hint{
+  position:absolute;
+  z-index:3;
+  bottom:26px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  font-size:13px;
+  font-weight:600;
+  text-shadow:0 2px 8px rgba(0,0,0,.8);
+  opacity:0;
+  animation:popIn .5s .9s ease both;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:768px){
+
+  .wrap{
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  section{
+    padding:40px 0;
+  }
+
   .hero{
-    background:var(--green);
-    color:var(--cream);
-    padding:34px 18px 46px;
-    position:relative;
-    overflow:hidden;
-    border-bottom:10px solid var(--yellow);
+    padding:34px 16px 42px;
   }
-  .hero::before{
-    content:"";
-    position:absolute;
-    top:-60px;right:-60px;
-    width:220px;height:220px;
-    background:var(--pink);
-    border-radius:50%;
-    opacity:.25;
+
+  .hero h1{
+    font-size:clamp(46px,12vw,78px);
   }
+
+  .hero .sub{
+    font-size:16px;
+  }
+
+  .phase-card{
+    min-height:175px;
+  }
+
+  .panel,
+  .form-panel,
+  .openplay-panel{
+    padding:24px 21px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+  body{
+    font-size:15px;
+  }
+
+  .wrap{
+    padding-left:13px;
+    padding-right:13px;
+  }
+
+  section{
+    padding:34px 0;
+  }
+
+  /* HERO */
+
+  .hero{
+    padding:30px 12px 38px;
+    border-bottom-width:8px;
+  }
+
   .club-line{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    justify-content:center;
-    font-weight:700;
+    font-size:10.5px;
+    letter-spacing:.65px;
+    gap:7px;
+    line-height:1.4;
+    padding:0 5px;
+  }
+
+  .club-line span.dot{
+    width:5px;
+    height:5px;
+  }
+
+  .hero h1{
+    font-size:clamp(43px,14vw,68px);
+    line-height:.88;
+    margin-top:13px;
+  }
+
+  .hero h1 .b3{
+    font-size:.48em;
+    margin-top:11px;
+  }
+
+  .hero .sub{
+    font-size:15px;
+    line-height:1.5;
+    padding:0 8px;
+    margin-top:17px;
+  }
+
+  .chips{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    margin-top:21px;
+    padding:0 6px;
+  }
+
+  .chip{
+    width:100%;
     font-size:13px;
-    letter-spacing:1px;
-    color:var(--yellow);
+    padding:10px 12px;
+  }
+
+  /* HEADINGS */
+
+  .kicker{
+    font-size:12px;
+    padding:5px 11px;
+  }
+
+  h2.title{
+    font-size:30px;
+    line-height:1.08;
+  }
+
+  .lede{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  /* PHASE CARDS */
+
+  .phase-row{
+    grid-template-columns:1fr;
+    gap:16px;
+    margin-top:22px;
+    padding:0 3px;
+  }
+
+  .phase-card{
+    min-height:0;
+    padding:22px 20px;
+  }
+
+  .phase-card.one,
+  .phase-card.two{
+    transform:none;
+  }
+
+  .phase-card h3{
+    font-size:23px;
+    padding-right:30px;
+  }
+
+  .phase-card p{
+    font-size:14px;
+  }
+
+  /* PANELS */
+
+  .panel{
+    border-radius:19px;
+    padding:21px 17px;
+    margin-top:17px;
+  }
+
+  .panel h3{
+    line-height:1.3;
+  }
+
+  /* SAMPLE GRID */
+
+  .sample-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+    margin-top:16px;
+  }
+
+  .sample{
+    min-height:105px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:13px 7px;
+    font-size:12.5px;
+  }
+
+  .sample .emoji{
+    font-size:29px;
     margin-bottom:6px;
   }
-  .club-line span.dot{width:6px;height:6px;background:var(--yellow);border-radius:50%}
-  .hero h1{
-    text-align:center;
-    font-size:clamp(46px,11vw,96px);
-    line-height:.86;
-    margin:6px auto 4px;
-    max-width:760px;
-  }
-  .hero h1 .b1{color:var(--pink)}
-  .hero h1 .b2{color:var(--blue)}
-  .hero h1 .b3{color:var(--yellow);display:block;font-size:.5em;margin-top:8px}
-  .hero .sub{
-    text-align:center;
-    font-weight:600;
-    font-size:17px;
-    max-width:520px;
-    margin:14px auto 0;
-    opacity:.9;
-  }
-  .chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
-    margin-top:22px;
-  }
-  .chip{
-    background:var(--cream);
-    color:var(--green);
-    font-weight:700;
-    font-size:14px;
-    padding:9px 16px;
-    border-radius:30px;
-    border:2px solid var(--yellow);
-  }
 
-  /* ---------- SECTION SHELL ---------- */
-  section{padding:40px 0}
-  .kicker{
-    display:inline-block;
-    font-weight:700;
-    font-size:13px;
-    color:var(--pink);
-    background:#ffe3ef;
-    padding:5px 12px;
-    border-radius:20px;
+  /* RULES */
+
+  ul.rules li{
+    font-size:14px;
+    line-height:1.5;
+    gap:9px;
     margin-bottom:10px;
   }
-  .kicker.blue{color:var(--blue);background:#e4f2fc}
-  .kicker.green{color:var(--green);background:#e2ede8}
-  h2.title{font-size:clamp(28px,5vw,40px);margin:0 0 6px;line-height:1}
-  .lede{font-size:16px;line-height:1.6;max-width:640px;color:#333}
 
-  /* ---------- PHASE OVERVIEW ---------- */
-  .phase-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin-top:26px;
-  }
-  @media(max-width:640px){.phase-row{grid-template-columns:1fr}}
-  .phase-card{
-    border-radius:22px;
-    padding:22px;
-    color:var(--cream);
-    position:relative;
-    transition:transform .25s ease;
-  }
-  .phase-card.one{background:var(--pink);transform:rotate(-2deg)}
-  .phase-card.two{background:var(--blue);transform:rotate(2deg)}
-  .phase-card:hover{transform:rotate(0) scale(1.02)}
-  .phase-card .tag{
-    font-weight:800;
-    font-size:13px;
-    letter-spacing:1px;
-    opacity:.85;
-  }
-  .phase-card h3{font-size:26px;margin:6px 0 8px}
-  .phase-card p{font-size:14px;line-height:1.55;margin:0}
-  .phase-card .arrow{
-    position:absolute;
-    right:18px;bottom:18px;
-    font-size:22px;
-    opacity:.6;
-  }
+  /* ROUNDS */
 
-  /* ---------- CARD / PANEL ---------- */
-  .panel{
-    background:#fff;
-    border-radius:24px;
-    padding:26px 24px;
-    margin-top:20px;
-    border:1px solid #eee;
-  }
-  .panel.dark{background:var(--green);color:var(--cream);border:none}
-  .panel.dark .lede{color:#dce9e2}
-  .panel.dark h2.title{color:#fff}
-
-  /* ---------- SAMPLE GRID ---------- */
-  .sample-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:12px;
-    margin-top:18px;
-  }
-  .sample{
-    background:var(--cream);
-    border-radius:16px;
-    padding:16px 10px;
-    text-align:center;
-    font-weight:600;
-    font-size:13.5px;
-    border:2px dashed var(--yellow);
-    transition:transform .2s ease;
-  }
-  .sample:hover{transform:translateY(-4px) rotate(-2deg)}
-  .sample .emoji{font-size:30px;display:block;margin-bottom:6px;transition:transform .2s ease}
-  .sample:hover .emoji{transform:scale(1.2) rotate(8deg)}
-  .panel.dark .sample{background:var(--green-light);border-color:var(--yellow);color:var(--cream)}
-
-  /* ---------- GUIDELINES LIST ---------- */
-  ul.rules{margin:14px 0 0;padding-left:0;list-style:none}
-  ul.rules li{
-    display:flex;
-    gap:10px;
-    align-items:flex-start;
-    font-size:14.5px;
-    line-height:1.5;
-    margin-bottom:9px;
-  }
-  ul.rules li::before{
-    content:"●";
-    color:var(--pink);
-    font-size:10px;
-    margin-top:6px;
-  }
-  .panel.dark ul.rules li::before{color:var(--yellow)}
-
-  /* ---------- ROUNDS ---------- */
   .round{
-    display:flex;
-    gap:16px;
-    align-items:flex-start;
-    background:var(--cream);
-    border-radius:18px;
-    padding:18px;
-    margin-top:14px;
+    gap:11px;
+    padding:14px;
+    border-radius:15px;
   }
+
   .round .num{
-    min-width:46px;height:46px;
-    border-radius:50%;
-    background:var(--yellow);
-    color:var(--ink);
-    display:grid;place-items:center;
-    font-family:'Anton',sans-serif;
-    font-size:20px;
-  }
-  .round h3{margin:0 0 4px;font-size:19px}
-  .round .badge{
-    display:inline-block;
-    background:var(--ink);
-    color:var(--yellow);
-    font-weight:700;
-    font-size:11.5px;
-    padding:3px 9px;
-    border-radius:6px;
-    margin-bottom:6px;
-  }
-  .round p{margin:4px 0;font-size:14px;line-height:1.5}
-
-  /* ---------- AWARDS ---------- */
-  .awards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
-    margin-top:18px;
-  }
-  .award{
-    background:var(--cream);
-    border-radius:16px;
-    padding:16px;
-    border-left:5px solid var(--pink);
-    transition:transform .2s ease;
-    color:var(--ink);
-  }
-  .award:hover{transform:translateY(-3px)}
-  .award.blue-edge{border-left-color:var(--blue)}
-  .award strong{display:block;font-size:15.5px;margin-bottom:3px;color:var(--ink)}
-  .award span{font-size:13px;color:#555;line-height:1.4}
-
-  /* ---------- OPEN PLAY ---------- */
-  .openplay-panel{
-    background:linear-gradient(135deg,var(--blue),#1c7fc4);
-    color:#fff;
-    border-radius:24px;
-    padding:28px 24px;
-    margin-top:20px;
-  }
-  .openplay-panel .kicker{background:rgba(255,255,255,.18);color:#fff}
-  .openplay-panel h2.title{color:#fff}
-  .openplay-panel .lede{color:#eaf4fb}
-  .openplay-panel ul.rules li::before{color:var(--yellow)}
-
-  /* ---------- GOLDEN NOTE ---------- */
-  .note{
-    border:2px dashed var(--yellow);
-    background:var(--green);
-    color:var(--cream);
-    border-radius:18px;
-    padding:18px 20px;
-    margin-top:22px;
-    text-align:center;
-    font-size:15px;
-  }
-  .note strong{color:var(--yellow)}
-
-  /* ---------- FORM ---------- */
-  .form-panel{
-    background:var(--ink);
-    color:var(--cream);
-    border-radius:24px;
-    padding:28px 24px;
-    margin-top:20px;
-  }
-  .form-panel .kicker{background:var(--yellow);color:var(--ink)}
-  .form-panel h2.title{color:#fff}
-  .form-panel .lede{color:#d8d8d8}
-  .field{margin-top:16px}
-  .field label{
-    display:block;
-    font-weight:600;
-    font-size:14px;
-    margin-bottom:6px;
-    color:var(--yellow);
-  }
-  .field input[type=text], .field input[type=tel]{
-    width:100%;
-    padding:12px 14px;
-    border-radius:10px;
-    border:none;
-    font-family:'Poppins',sans-serif;
-    font-size:14px;
-  }
-  .radio-group{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  @media(max-width:480px){.radio-group{grid-template-columns:1fr}}
-  .radio-option{
-    background:var(--green-light);
-    border:2px solid transparent;
-    border-radius:10px;
-    padding:10px 12px;
-    font-size:13.5px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    cursor:pointer;
-  }
-  .radio-option input{accent-color:var(--yellow)}
-  .radio-option:has(input:checked){border-color:var(--yellow);background:#1d5943}
-  .submit-btn{
-    margin-top:22px;
-    width:100%;
-    background:var(--pink);
-    color:#fff;
-    border:none;
-    padding:15px;
-    border-radius:12px;
-    font-family:'Anton',sans-serif;
+    min-width:40px;
+    height:40px;
     font-size:18px;
-    letter-spacing:1px;
-    cursor:pointer;
-    text-transform:uppercase;
-  }
-  .submit-btn:hover{background:#e6317a;transform:translateY(-2px)}
-  .deadline-strip{
-    margin-top:16px;
-    background:var(--yellow);
-    color:var(--ink);
-    border-radius:10px;
-    padding:10px 14px;
-    font-weight:700;
-    font-size:13.5px;
-    text-align:center;
-  }
-  .contact-line{
-    text-align:center;
-    font-size:13px;
-    margin-top:12px;
-    color:#bbb;
-  }
-  .contact-line strong{color:var(--cream)}
-  .status-msg{
-    margin-top:10px;
-    font-size:13.5px;
-    font-weight:600;
-    min-height:1.2em;
-  }
-  .status-msg.ok{color:var(--yellow)}
-  .status-msg.err{color:#ff8080}
-  .registered-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
-  .registrant{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    background:var(--cream);
-    border-radius:12px;
-    padding:10px 14px;
-    flex-wrap:wrap;
-  }
-  .registrant .name{font-weight:700;font-size:14.5px}
-  .registrant .program{
-    background:var(--ink);
-    color:var(--yellow);
-    font-size:11.5px;
-    font-weight:700;
-    padding:4px 10px;
-    border-radius:20px;
-  }
-  .empty-note{font-size:14px;color:#666}
-
-  /* ---------- FREE FOOD ---------- */
-  .foodie-panel{
-    background:linear-gradient(135deg,var(--yellow),#ffb400);
-    color:var(--ink);
-    border-radius:24px;
-    padding:24px;
-    margin-top:16px;
-    font-size:15px;
-    line-height:1.55;
-    font-weight:600;
-    border:3px dashed var(--pink);
   }
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--green);
-    color:var(--cream);
-    text-align:center;
-    padding:30px 18px 36px;
+  .round h3{
+    font-size:17px;
   }
-  footer .brand{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px}
-  footer .tags{
-    margin-top:10px;
+
+  .round .badge{
+    font-size:10px;
+    line-height:1.3;
+  }
+
+  .round p{
+    font-size:13.5px;
+    line-height:1.5;
+  }
+
+  /* AWARDS */
+
+  .awards{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .award{
+    padding:14px;
+  }
+
+  .award strong{
+    font-size:14.5px;
+  }
+
+  .award span{
     font-size:12.5px;
-    letter-spacing:2px;
-    color:var(--yellow);
-    font-weight:700;
   }
 
-  /* ---------- FUN / MOTION ---------- */
-  @keyframes popIn{
-    from{opacity:0;transform:scale(.92) translateY(12px)}
-    to{opacity:1;transform:scale(1) translateY(0)}
-  }
-  .hero h1{animation:popIn .6s ease both}
-  .hero .sub{animation:popIn .6s .12s ease both}
-  .hero .chips{animation:popIn .6s .24s ease both}
-  .submit-btn, .radio-option, .phase-card, .award, .sample{transition-property:transform,background;transition-duration:.2s}
+  /* OPEN PLAY */
 
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none!important;transition:none!important}
+  .openplay-panel{
+    border-radius:19px;
+    padding:23px 17px;
   }
 
-  /* ---------- SPLASH ---------- */
-  #splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#071f17;overflow:hidden;transition:opacity .6s ease}
-  #splash::before{content:"";position:absolute;inset:-35px;background:url("poster.jpg") center/cover no-repeat;filter:blur(24px) brightness(.48);transform:scale(1.08)}
-  #splash::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.20)}
-  #splash .splash-poster{position:relative;z-index:2;width:min(88vw,520px);max-height:86vh;height:auto;object-fit:contain;border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
-  #splash.hide{opacity:0;pointer-events:none}
-  #splash .tap-hint{position:absolute;z-index:3;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;text-shadow:0 2px 8px rgba(0,0,0,.8);opacity:0;animation:popIn .5s .9s ease both}
+  /* NOTE */
+
+  .note{
+    padding:17px 14px;
+    font-size:14px;
+  }
+
+  /* FOOD */
+
+  .foodie-panel{
+    border-radius:19px;
+    padding:19px 16px;
+    font-size:14px;
+  }
+
+  /* FORM */
+
+  .form-panel{
+    border-radius:19px;
+    padding:23px 17px;
+  }
+
+  .field{
+    margin-top:17px;
+  }
+
+  .field label{
+    font-size:13.5px;
+  }
+
+  .field input[type=text],
+  .field input[type=tel]{
+    min-height:52px;
+    font-size:15px;
+    padding:13px 14px;
+  }
+
+  .radio-group{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .radio-option{
+    min-height:53px;
+    padding:13px 12px;
+    font-size:13.5px;
+  }
+
+  .submit-btn{
+    min-height:55px;
+    font-size:18px;
+  }
+
+  .deadline-strip{
+    font-size:12.5px;
+    padding:10px;
+  }
+
+  .contact-line{
+    font-size:12px;
+  }
+
+  /* REGISTRANTS */
+
+  .registrant{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:7px;
+  }
+
+  .registrant .name{
+    font-size:14px;
+  }
+
+  .registrant .program{
+    font-size:11px;
+  }
+
+  /* REMOVE FORM */
+
+  #removeForm{
+    flex-direction:column!important;
+  }
+
+  #removeForm input{
+    width:100%;
+    min-height:52px;
+  }
+
+  #removeForm .submit-btn{
+    width:100%!important;
+  }
+
+  /* FOOTER */
+
+  footer{
+    padding:28px 15px 35px;
+  }
+
+  footer .brand{
+    font-size:19px;
+    line-height:1.25;
+  }
+
+  footer .tags{
+    font-size:10px;
+    letter-spacing:1.2px;
+  }
+
+  /* SPLASH */
+
+  #splash .splash-poster{
+    width:92vw;
+    max-height:82vh;
+    border-radius:13px;
+  }
+
+  #splash .tap-hint{
+    font-size:12px;
+    bottom:18px;
+  }
+}
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:380px){
+
+  .hero h1{
+    font-size:41px;
+  }
+
+  .hero .sub{
+    font-size:14px;
+  }
+
+  h2.title{
+    font-size:27px;
+  }
+
+  .sample{
+    font-size:12px;
+    min-height:100px;
+  }
+
+  .sample .emoji{
+    font-size:27px;
+  }
+
+  .round{
+    padding:12px;
+  }
+
+  .round .num{
+    min-width:37px;
+    height:37px;
+    font-size:17px;
+  }
+
+  .round h3{
+    font-size:16px;
+  }
+
+  .round p{
+    font-size:13px;
+  }
+}
 </style>
+
 </head>
+
 <body>
 
+<!-- =========================
+     SPLASH
+========================= -->
+
 <div id="splash">
-  <img class="splash-poster" src="poster.jpg" alt="Wrong Outfit and Wrong Paddle event poster">
+  <img
+    class="splash-poster"
+    src="poster.jpg"
+    alt="Wrong Outfit and Wrong Paddle event poster"
+  >
   <div class="tap-hint">Tap to enter ⚡</div>
 </div>
 
+<!-- =========================
+     HERO
+========================= -->
+
 <div class="hero">
-  <div class="club-line">CALAPAN CITY PICKLEBALL CLUB <span class="dot"></span> CHAOS INCOMING</div>
+
+  <div class="club-line">
+    CALAPAN CITY PICKLEBALL CLUB
+    <span class="dot"></span>
+    CHAOS INCOMING
+  </div>
+
   <h1>
     <span class="b1">WRONG OUTFIT</span><br>
     AND <span class="b2">WRONG PADDLE</span>
     <span class="b3">DUPR Open Play</span>
   </h1>
-  <p class="sub">Feeling cute, might embarrass myself later. 2 parts, 1 crazy morning, sign up ka na.</p>
+
+  <p class="sub">
+    Feeling cute, might embarrass myself later.
+    2 parts, 1 crazy morning, sign up ka na.
+  </p>
+
   <div class="chips">
     <div class="chip">📅 Sept 26, 2026 · Sabado</div>
     <div class="chip">⏰ 7AM start, wag mag-Filipino time</div>
     <div class="chip">📍 PKL Box Calapan</div>
   </div>
+
 </div>
 
 <div class="wrap">
 
-  <!-- PROGRAM OVERVIEW -->
-  <section>
-    <span class="kicker">The Program</span>
-    <h2 class="title">2 Parts, 1 Morning</h2>
-    <p class="lede">Part 1 muna | outfit + paddle chaos. Then straight to Part 2, totoong laro na. Join one part or both, your call. Walang pilitan, pwede rin manood lang. </p>
+<!-- =========================
+     PROGRAM OVERVIEW
+========================= -->
 
-    <div class="phase-row">
-      <div class="phase-card one">
-        <div class="tag">PART 1 · CHAOS MODE</div>
-        <h3>Wrong Outfit &amp; Wrong Paddle</h3>
-        <p>Outfit parade + paddle na very wrooonggg MALIIIII!!!.</p>
-        <div class="arrow">↓</div>
-      </div>
-      <div class="phase-card two">
-        <div class="tag">PART 2 · SERIOUS MODE</div>
-        <h3>DUPR Open Play</h3>
-        <p>Normal paddle, normal outfit, totoong ranking. Diretso laban.</p>
-        <div class="arrow">🏓</div>
-      </div>
-    </div>
-  </section>
+<section>
 
-  <!-- PART 1: WRONG OUTFIT -->
-  <section id="wrong-outfit">
-    <span class="kicker">Part 1A</span>
-    <h2 class="title">Wrong Outfit Parade</h2>
-    <p class="lede">Before tamaan ng hiya, magparada ka muna sa harap ng mga judge suot ang wrong outfit mo. Kapal ng mukha lang ang kailangan.</p>
-    <p class="lede">Bonus points kung magkatugma ang outfit at paddle e.g chef outfit + frying pan? Iconic. Bahala ka na sa combo.</p>
+<span class="kicker">The Program</span>
 
-    <div class="panel">
-      <h3 style="margin-top:0;font-size:19px">Sample Outfits (for inspo)</h3>
-      <div class="sample-grid">
-        <div class="sample"><span class="emoji">💼</span>Office Attire (heels pa more)</div>
-        <div class="sample"><span class="emoji">👰</span>Bride Mode</div>
-        <div class="sample"><span class="emoji">👨‍🍳</span>Chef Look</div>
-        <div class="sample"><span class="emoji">🩷</span>Pajama Vibes</div>
-        <div class="sample"><span class="emoji">🤠</span>Farmer Style</div>
-        <div class="sample"><span class="emoji">🦸</span>Superhero on Court</div>
-      </div>
+  <h2 class="title">2 Parts, 1 Morning</h2>
 
-      <h3 style="font-size:19px">Guidelines</h3>
-      <ul class="rules">
-        <li>Outfit must be safe to move and play in.</li>
-        <li><strong>No offensive, discriminatory, or culturally disrespectful costumes.</strong></li>
-        <li>Footwear is your choice; heels, slippers, barefoot — at your own risk.</li>
-        <li>Judged parade-style, one at a time.</li>
-        <li>Judges' decisions are final.</li>
-      </ul>
-    </div>
+  <p class="lede">
+    Part 1 muna | outfit + paddle chaos.
+    Then straight to Part 2, totoong laro na.
+    Join one part or both, your call.
+    Walang pilitan, pwede rin manood lang.
+  </p>
 
-    <div class="panel dark">
-      <h3 style="margin-top:0;font-size:19px;color:#fff">Wrong Outfit Awards</h3>
-      <div class="awards">
-        <div class="award blue-edge"><strong>😂 Funniest Outfit</strong><span>Buong club, napatawa mo. WTF bruh?.</span></div>
-        <div class="award blue-edge"><strong>🎭 Most Creative</strong><span>Sino nag-isip nito?!</span></div>
-        <div class="award blue-edge"><strong>🫡 Best in Character</strong><span>Zero hiya, full send.</span></div>
-        <div class="award blue-edge"><strong>🗳️ People's Choice</strong><span>Ikaw and bet ng bayan.</span></div>
-      </div>
-    </div>
-  </section>
+  <div class="phase-row">
 
-  <!-- PART 1: WRONG PADDLE -->
-  <section id="wrong-paddle">
-    <span class="kicker">Part 1B</span>
-    <h2 class="title">Wrong Paddle Challenge</h2>
-    <p class="lede">Iwan mo muna yung Boomstik mo. Grab something na hindi dapat pang-pickleball — tara laban.</p>
 
-    <div class="panel dark">
-      <h3 style="margin-top:0;font-size:19px;color:#fff">Bring Your Own Wrong Paddle</h3>
-      <div class="sample-grid">
-        <div class="sample"><span class="emoji">🍳</span>Frying Pan</div>
-        <div class="sample"><span class="emoji">🩴</span>Flip-Flop</div>
-        <div class="sample"><span class="emoji">🥄</span>Big Spoon</div>
-        <div class="sample"><span class="emoji">🧹</span>Broom</div>
-        <div class="sample"><span class="emoji">🪵</span>Wooden Board</div>
-        <div class="sample"><span class="emoji">📕</span>Book / Notebook</div>
-      </div>
+<div class="phase-card one">
+  <div class="tag">PART 1 · CHAOS MODE</div>
 
-      <h3 style="font-size:19px;color:#fff">Guidelines</h3>
-      <ul class="rules">
-        <li>Bring your own wrong paddle — handheld and safe to swing.</li>
-        <li><strong>Racket sports paddles or rackets are not allowed</strong> (tennis, badminton, squash, table tennis) — fairness lang.</li>
-        <li>No sharp edges, nails, glass, blades, or anything dangerous.</li>
-        <li><strong>No offensive or discriminatory items</strong> as a paddle or prop.</li>
-        <li>Stick to your wrong paddle for the whole challenge — no switching.</li>
-        <li>Paddle breaks mid-game? That's on you.</li>
-        <li>Organizers have final say on what's allowed.</li>
-      </ul>
-    </div>
+  <h3>Wrong Outfit &amp; Wrong Paddle</h3>
 
-    <div class="panel">
-      <h3 style="margin-top:0;font-size:19px">The Challenge — 4 Rounds</h3>
-      <div class="round">
-        <div class="num">1</div>
-        <div>
-          <div class="badge">3 TRIES</div>
-          <h3>Service Test</h3>
-          <p>Kaya mo bang mag-serve? 3 tries lang.</p>
-          <p><strong>1 in → advance. Palpak ang 3 → out.</strong></p>
-        </div>
-      </div>
-      <div class="round">
-        <div class="num">2</div>
-        <div>
-          <div class="badge">FIRST TO 2 · PICK YOUR OPPONENT</div>
-          <h3>Dink Battle</h3>
-          <p>1 vs. 1 sa kitchen line, Bawal volley, Bawal labas sa kitchen.</p>
-          <p><strong>First to 2, advance. Matalo, tapos.</strong></p>
-        </div>
-      </div>
-      <div class="round">
-        <div class="num">3</div>
-        <div>
-          <div class="badge">FIRST TO 2 · PICK YOUR PARTNER</div>
-          <h3>Doubles Battle</h3>
-          <p>2 vs. 2, tara partner. Blaming your partner's paddle is encouraged.</p>
-          <p><strong>First team to 2, advance.</strong></p>
-        </div>
-      </div>
-      <div class="round">
-        <div class="num">4</div>
-        <div>
-          <div class="badge">FIRST TO 2 · FINALS</div>
-          <h3>Singles Showdown</h3>
-          <p>Last two standing, final laban na 'to.</p>
-          <p><strong>Winner = Wrong Paddle Champion.</strong></p>
-        </div>
-      </div>
-    </div>
+  <p>
+    Outfit parade + paddle na very
+    wrooonggg MALIIIII!!!
+  </p>
 
-    <div class="panel dark">
-      <h3 style="margin-top:0;font-size:19px;color:#fff">Wrong Paddle Awards</h3>
-      <div class="awards">
-        <div class="award"><strong>😂 Funniest Paddle</strong><span>Bakit ganon?, HAHAHAHAHA.</span></div>
-        <div class="award"><strong>🤯 Most Unique Paddle</strong><span>Wala pang ganito dati.</span></div>
-        <div class="award"><strong>💀 Most Unusable Paddle</strong><span>MALLLIIIIIIII!.</span></div>
-        <div class="award"><strong>🔥 Surprisingly Effective</strong><span>Panget, pero galing.</span></div>
-        <div class="award"><strong>🏓 Wrong Paddle Champion</strong><span>Wow! Champion.</span></div>
-        <div class="award"><strong>🗳️ People's Choice</strong><span>Eh di, ikaw na!.</span></div>
-      </div>
-    </div>
+  <div class="arrow">↓</div>
+</div>
 
-    <div class="note">
-      <strong>😂 THE GOLDEN RULE:</strong><br>
-      If someone looks at your paddle and says, "Pwede ba 'yan?!" — you've probably brought the right wrong paddle.
-    </div>
-  </section>
+<div class="phase-card two">
+  <div class="tag">PART 2 · SERIOUS MODE</div>
 
-  <!-- PART 2: OPEN PLAY -->
-  <section id="open-play">
-    <span class="kicker blue">Part 2</span>
-    <h2 class="title">DUPR Open Play</h2>
-    <div class="openplay-panel">
-      <p class="lede" style="margin:0 0 12px">Tapos na ang kalokohan — laro na tayo for real.</p>
-      <ul class="rules">
-        <li>Normal paddles required. Wrong outfit is optional — kung ituloy mo, Go!</li>
-        <li>Open to all members kahit di sumali sa Part 1.</li>
-        <li>Standard DUPR format and game rules apply.</li>
-      </ul>
-    </div>
-  </section>
+  <h3>DUPR Open Play</h3>
 
-  <!-- FREE FOOD -->
-  <section id="free-food">
-    <span class="kicker green">Bonus</span>
-    <h2 class="title">Free Food Alert 🎂</h2>
-    <div class="foodie-panel">
-      <p style="margin:0 0 10px">Kung umabot ka sa part na ito, Meron palang pagkain! Sponsored by our <strong>birthday celebrants</strong> this month (saka nung last, at nung isa pang last) — kala nyo nakaligtas na kayo? hehe 🍗🎉</p>
-      <p style="margin:0">Di mo birthday? Pwede ka pa rin magsponsor. PM is the key.</p>
-    </div>
-  </section>
+  <p>
+    Normal paddle, normal outfit,
+    totoong ranking. Diretso laban.
+  </p>
 
-  <!-- REGISTRATION -->
-  <section id="register">
-    <span class="kicker green">Registration</span>
-    <h2 class="title">Reserve Your Slot</h2>
-    <p class="lede">Lagay mo lang name mo para alam namin nagbasa ka, Join ka na rin sa ReClub!.</p>
+  <div class="arrow">🏓</div>
+</div>
 
-    <form class="form-panel" id="regForm">
-      <div class="field">
-        <label for="fullname">Full Name - Baka may katukayo ka na sa club</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Juan Dela Cruz" required>
-      </div>
-      <div class="field">
-        <label for="contact">Contact Number</label>
-        <input type="tel" id="contact" name="contact" placeholder="09XX XXX XXXX" required>
-      </div>
-      <div class="field">
-        <label>Sasali ka ba sa Wrong Outfit / Wrong Paddle program?</label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="program" value="Wrong Outfit lang" required> Wrong Outfit lang</label>
-          <label class="radio-option"><input type="radio" name="program" value="Wrong Paddle lang"> Wrong Paddle lang</label>
-          <label class="radio-option"><input type="radio" name="program" value="Both, sige na nga"> Both, sige na nga</label>
-          <label class="radio-option"><input type="radio" name="program" value="Open Play lang, seryoso ako"> Open Play lang, seryoso akong tao</label>
-        </div>
-      </div>
 
-      <button type="submit" class="submit-btn">G! I love CCPC!</button>
-      <div id="regStatus" class="status-msg"></div>
+  </div>
 
-      <div class="deadline-strip">⏳ Deadline: September 23, 2026 — wag last minute.</div>
-      <div class="contact-line">Questions? Basa muna ulit or Tawagan si <strong>President Larry</strong> o kahit sinong officer.</div>
-    </form>
+</section>
 
-    <div class="panel">
-      <h3 style="margin-top:0;font-size:19px">Interested</h3>
-      <div id="registeredList" class="registered-list">
-        <p class="lede" style="margin:0">Loading…</p>
-      </div>
-    </div>
+<!-- =========================
+     WRONG OUTFIT
+========================= -->
 
-    <div class="panel dark">
-      <h3 style="margin-top:0;font-size:19px;color:#fff">Not interested anymore?</h3>
-      <p class="lede" style="color:#dce9e2;margin:0 0 12px">Same contact number para matanggal ka sa listahan.</p>
-      <form id="removeForm" style="display:flex;gap:10px;flex-wrap:wrap">
-        <input type="tel" id="removeContact" placeholder="09XX XXX XXXX" required
-          style="flex:1;min-width:180px;padding:12px 14px;border-radius:10px;border:none;font-family:'Poppins',sans-serif;font-size:14px">
-        <button type="submit" class="submit-btn" style="width:auto;padding:12px 22px;font-size:15px">Alisin</button>
-      </form>
-      <div id="removeStatus" class="status-msg"></div>
-    </div>
-  </section>
+<section id="wrong-outfit">
+
+<span class="kicker">Part 1A</span>
+
+  <h2 class="title">Wrong Outfit Parade</h2>
+
+  <p class="lede">
+    Before tamaan ng hiya, magparada ka muna
+    sa harap ng mga judge suot ang wrong outfit mo.
+    Kapal ng mukha lang ang kailangan.
+  </p>
+
+  <p class="lede">
+    Bonus points kung magkatugma ang outfit at paddle
+    e.g chef outfit + frying pan? Iconic.
+    Bahala ka na sa combo.
+  </p>
+
+  <div class="panel">
+
+
+<h3 style="margin-top:0;font-size:19px">
+  Sample Outfits (for inspo)
+</h3>
+
+<div class="sample-grid">
+
+  <div class="sample">
+    <span class="emoji">💼</span>
+    Office Attire (heels pa more)
+  </div>
+
+  <div class="sample">
+    <span class="emoji">👰</span>
+    Bride Mode
+  </div>
+
+  <div class="sample">
+    <span class="emoji">👨‍🍳</span>
+    Chef Look
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🩷</span>
+    Pajama Vibes
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🤠</span>
+    Farmer Style
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🦸</span>
+    Superhero on Court
+  </div>
 
 </div>
 
+<h3 style="font-size:19px">
+  Guidelines
+</h3>
+
+<ul class="rules">
+
+  <li>
+    Outfit must be safe to move and play in.
+  </li>
+
+  <li>
+    <strong>
+      No offensive, discriminatory, or culturally
+      disrespectful costumes.
+    </strong>
+  </li>
+
+  <li>
+    Footwear is your choice; heels, slippers,
+    barefoot — at your own risk.
+  </li>
+
+  <li>
+    Judged parade-style, one at a time.
+  </li>
+
+  <li>
+    Judges' decisions are final.
+  </li>
+
+</ul>
+
+
+  </div>
+
+  <div class="panel dark">
+
+
+<h3 style="margin-top:0;font-size:19px;color:#fff">
+  Wrong Outfit Awards
+</h3>
+
+<div class="awards">
+
+  <div class="award blue-edge">
+    <strong>😂 Funniest Outfit</strong>
+    <span>
+      Buong club, napatawa mo. WTF bruh?.
+    </span>
+  </div>
+
+  <div class="award blue-edge">
+    <strong>🎭 Most Creative</strong>
+    <span>
+      Sino nag-isip nito?!
+    </span>
+  </div>
+
+  <div class="award blue-edge">
+    <strong>🫡 Best in Character</strong>
+    <span>
+      Zero hiya, full send.
+    </span>
+  </div>
+
+  <div class="award blue-edge">
+    <strong>🗳️ People's Choice</strong>
+    <span>
+      Ikaw ang bet ng bayan.
+    </span>
+  </div>
+
+</div>
+
+
+  </div>
+
+</section>
+
+<!-- =========================
+     WRONG PADDLE
+========================= -->
+
+<section id="wrong-paddle">
+
+<span class="kicker">Part 1B</span>
+
+  <h2 class="title">Wrong Paddle Challenge</h2>
+
+  <p class="lede">
+    Iwan mo muna yung Boomstik mo.
+    Grab something na hindi dapat pang-pickleball —
+    tara laban.
+  </p>
+
+  <div class="panel dark">
+
+
+<h3 style="margin-top:0;font-size:19px;color:#fff">
+  Bring Your Own Wrong Paddle
+</h3>
+
+<div class="sample-grid">
+
+  <div class="sample">
+    <span class="emoji">🍳</span>
+    Frying Pan
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🩴</span>
+    Flip-Flop
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🥄</span>
+    Big Spoon
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🧹</span>
+    Broom
+  </div>
+
+  <div class="sample">
+    <span class="emoji">🪵</span>
+    Wooden Board
+  </div>
+
+  <div class="sample">
+    <span class="emoji">📕</span>
+    Book / Notebook
+  </div>
+
+</div>
+
+<h3 style="font-size:19px;color:#fff">
+  Guidelines
+</h3>
+
+<ul class="rules">
+
+  <li>
+    Bring your own wrong paddle —
+    handheld and safe to swing.
+  </li>
+
+  <li>
+    <strong>
+      Racket sports paddles or rackets are not allowed
+    </strong>
+    (tennis, badminton, squash, table tennis) —
+    fairness lang.
+  </li>
+
+  <li>
+    No sharp edges, nails, glass, blades,
+    or anything dangerous.
+  </li>
+
+  <li>
+    <strong>
+      No offensive or discriminatory items
+    </strong>
+    as a paddle or prop.
+  </li>
+
+  <li>
+    Stick to your wrong paddle for the whole challenge —
+    no switching.
+  </li>
+
+  <li>
+    Paddle breaks mid-game? That's on you.
+  </li>
+
+  <li>
+    So many rules, right? Good thing you read them. List your name below, you'll get a surprise from me.
+  </li>
+
+  <li>
+Keep quiet so we can see who reads and who doesn't. I have a raffle, so those who read have a higher chance of winning!  </li>
+
+  <li>
+    Organizers have final say on what's allowed.
+  </li>
+
+</ul>
+
+
+  </div>
+
+  <!-- CHALLENGE -->
+
+  <div class="panel">
+
+
+<h3 style="margin-top:0;font-size:19px">
+  The Challenge — 4 Rounds
+</h3>
+
+<div class="round">
+
+  <div class="num">1</div>
+
+  <div>
+
+    <div class="badge">
+      3 TRIES
+    </div>
+
+    <h3>
+      Service Test
+    </h3>
+
+    <p>
+      Kaya mo bang mag-serve? 3 tries lang.
+    </p>
+
+    <p>
+      <strong>
+        1 in → advance.
+        Palpak ang 3 → out.
+      </strong>
+    </p>
+
+  </div>
+
+</div>
+
+<div class="round">
+
+  <div class="num">2</div>
+
+  <div>
+
+    <div class="badge">
+      FIRST TO 2 · PICK YOUR OPPONENT
+    </div>
+
+    <h3>
+      Dink Battle
+    </h3>
+
+    <p>
+      1 vs. 1 sa kitchen line,
+      Bawal volley, Bawal labas sa kitchen.
+    </p>
+
+    <p>
+      <strong>
+        First to 2, advance.
+        Matalo, tapos.
+      </strong>
+    </p>
+
+  </div>
+
+</div>
+
+<div class="round">
+
+  <div class="num">3</div>
+
+  <div>
+
+    <div class="badge">
+      FIRST TO 2 · PICK YOUR PARTNER
+    </div>
+
+    <h3>
+      Doubles Battle
+    </h3>
+
+    <p>
+      2 vs. 2, tara partner.
+      Blaming your partner's paddle is encouraged.
+    </p>
+
+    <p>
+      <strong>
+        First team to 2, advance.
+      </strong>
+    </p>
+
+  </div>
+
+</div>
+
+<div class="round">
+
+  <div class="num">4</div>
+
+  <div>
+
+    <div class="badge">
+      FIRST TO 2 · FINALS
+    </div>
+
+    <h3>
+      Singles Showdown
+    </h3>
+
+    <p>
+      Last two standing, final laban na 'to.
+    </p>
+
+    <p>
+      <strong>
+        Winner = Wrong Paddle Champion.
+      </strong>
+    </p>
+
+  </div>
+
+</div>
+
+
+  </div>
+
+  <!-- PADDLE AWARDS -->
+
+  <div class="panel dark">
+
+
+<h3 style="margin-top:0;font-size:19px;color:#fff">
+  Wrong Paddle Awards
+</h3>
+
+<div class="awards">
+
+  <div class="award">
+    <strong>😂 Funniest Paddle</strong>
+    <span>
+      Bakit ganon?, HAHAHAHAHA.
+    </span>
+  </div>
+
+  <div class="award">
+    <strong>🤯 Most Unique Paddle</strong>
+    <span>
+      Wala pang ganito dati.
+    </span>
+  </div>
+
+  <div class="award">
+    <strong>💀 Most Unusable Paddle</strong>
+    <span>
+      MALLLIIIIIIII!.
+    </span>
+  </div>
+
+  <div class="award">
+    <strong>🔥 Surprisingly Effective</strong>
+    <span>
+      Panget, pero galing.
+    </span>
+  </div>
+
+  <div class="award">
+    <strong>🏓 Wrong Paddle Champion</strong>
+    <span>
+      Wow! Champion.
+    </span>
+  </div>
+
+  <div class="award">
+    <strong>🗳️ People's Choice</strong>
+    <span>
+      Eh di, ikaw na!.
+    </span>
+  </div>
+
+</div>
+
+
+  </div>
+
+  <div class="note">
+
+
+<strong>😂 THE GOLDEN RULE:</strong><br>
+
+If someone looks at your paddle and says,
+"Pwede ba 'yan?!" —
+you've probably brought the right wrong paddle.
+
+
+  </div>
+
+</section>
+
+<!-- =========================
+     OPEN PLAY
+========================= -->
+
+<section id="open-play">
+
+  <span class="kicker blue">
+    Part 2
+  </span>
+
+  <h2 class="title">
+    DUPR Open Play
+  </h2>
+
+  <div class="openplay-panel">
+
+
+<p class="lede" style="margin:0 0 12px">
+  Tapos na ang kalokohan —
+  laro na tayo for real.
+</p>
+
+<ul class="rules">
+
+  <li>
+    Normal paddles required.
+    Wrong outfit is optional —
+    kung ituloy mo, Go!
+  </li>
+
+  <li>
+    Open to all members kahit di sumali sa Part 1.
+  </li>
+
+  <li>
+    Standard DUPR format and game rules apply.
+  </li>
+
+</ul>
+
+
+  </div>
+
+</section>
+
+<!-- =========================
+     FREE FOOD
+========================= -->
+
+<section id="free-food">
+
+  <span class="kicker green">
+    Bonus
+  </span>
+
+  <h2 class="title">
+    Free Food Alert 🎂
+  </h2>
+
+  <div class="foodie-panel">
+
+
+<p style="margin:0 0 10px">
+  Kung umabot ka sa part na ito,
+  Meron palang pagkain!
+  Sponsored by our
+  <strong>birthday celebrants</strong>
+  this month
+  (saka nung last, at nung isa pang last) —
+  kala nyo nakaligtas na kayo? hehe 🍗🎉
+</p>
+
+<p style="margin:0">
+  Di mo birthday?
+  Pwede ka pa rin magsponsor.
+  PM is the key.
+</p>
+
+
+  </div>
+
+</section>
+
+<!-- =========================
+     REGISTRATION
+========================= -->
+
+<section id="register">
+
+  <span class="kicker green">
+    Registration
+  </span>
+
+  <h2 class="title">
+    Reserve Your Slot
+  </h2>
+
+  <p class="lede">
+    Lagay mo lang name mo para alam namin
+    nagbasa ka, Join ka na rin sa ReClub!.
+  </p>
+
+  <form class="form-panel" id="regForm">
+
+
+<div class="field">
+
+  <label for="fullname">
+    Full Name - Baka may katukayo ka na sa club
+  </label>
+
+  <input
+    type="text"
+    id="fullname"
+    name="fullname"
+    placeholder="Juan Dela Cruz"
+    autocomplete="name"
+    required
+  >
+
+</div>
+
+<div class="field">
+
+  <label for="contact">
+    Contact Number
+  </label>
+
+  <input
+    type="tel"
+    id="contact"
+    name="contact"
+    placeholder="09XX XXX XXXX"
+    inputmode="tel"
+    autocomplete="tel"
+    required
+  >
+
+</div>
+
+<div class="field">
+
+  <label>
+    Sasali ka ba sa Wrong Outfit / Wrong Paddle program?
+  </label>
+
+  <div class="radio-group">
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="program"
+        value="Wrong Outfit lang"
+        required
+      >
+      <span>Wrong Outfit lang</span>
+    </label>
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="program"
+        value="Wrong Paddle lang"
+      >
+      <span>Wrong Paddle lang</span>
+    </label>
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="program"
+        value="Both, sige na nga"
+      >
+      <span>Both, sige na nga</span>
+    </label>
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="program"
+        value="Open Play lang, seryoso ako"
+      >
+      <span>Open Play lang, seryoso akong tao</span>
+    </label>
+
+  </div>
+
+</div>
+
+<button
+  type="submit"
+  class="submit-btn"
+>
+  G! I love CCPC!
+</button>
+
+<div
+  id="regStatus"
+  class="status-msg"
+  aria-live="polite"
+></div>
+
+<div class="deadline-strip">
+  ⏳ Deadline: September 23, 2026 — wag last minute.
+</div>
+
+<div class="contact-line">
+  Questions?
+  Basa muna ulit or Tawagan si
+  <strong>President Larry</strong>
+  o kahit sinong officer.
+</div>
+
+
+  </form>
+
+  <!-- INTERESTED -->
+
+  <div class="panel">
+
+
+<h3 style="margin-top:0;font-size:19px">
+  Interested
+</h3>
+
+<div
+  id="registeredList"
+  class="registered-list"
+>
+  <p class="lede" style="margin:0">
+    Loading…
+  </p>
+</div>
+
+
+  </div>
+
+  <!-- REMOVE -->
+
+  <div class="panel dark">
+
+
+<h3 style="margin-top:0;font-size:19px;color:#fff">
+  Not interested anymore?
+</h3>
+
+<p
+  class="lede"
+  style="color:#dce9e2;margin:0 0 12px"
+>
+  Same contact number para matanggal ka sa listahan.
+</p>
+
+<form
+  id="removeForm"
+  style="display:flex;gap:10px;flex-wrap:wrap"
+>
+
+  <input
+    type="tel"
+    id="removeContact"
+    placeholder="09XX XXX XXXX"
+    inputmode="tel"
+    required
+    style="
+      flex:1;
+      min-width:180px;
+      padding:12px 14px;
+      min-height:52px;
+      border-radius:10px;
+      border:none;
+      font-family:'Poppins',sans-serif;
+      font-size:14px;
+    "
+  >
+
+  <button
+    type="submit"
+    class="submit-btn"
+    style="
+      width:auto;
+      padding:12px 22px;
+      font-size:15px;
+      margin-top:0;
+    "
+  >
+    Alisin
+  </button>
+
+</form>
+
+<div
+  id="removeStatus"
+  class="status-msg"
+  aria-live="polite"
+></div>
+
+
+  </div>
+
+</section>
+
+</div>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  <div class="brand">CCPC · CALAPAN CITY PICKLEBALL CLUB</div>
-  <div class="tags">SPORT &nbsp;|&nbsp; FRIENDSHIP &nbsp;|&nbsp; WELLNESS &nbsp;|&nbsp; COMMUNITY</div>
+
+  <div class="brand">
+    CCPC · CALAPAN CITY PICKLEBALL CLUB
+  </div>
+
+  <div class="tags">
+    SPORT &nbsp;|&nbsp;
+    FRIENDSHIP &nbsp;|&nbsp;
+    WELLNESS &nbsp;|&nbsp;
+    COMMUNITY
+  </div>
+
 </footer>
+
+<!-- =========================
+     SPLASH SCRIPT
+========================= -->
 
 <script>
 (function(){
-  var splash=document.getElementById('splash');
-  document.body.style.overflow='hidden';
-  function dismissSplash(){if(splash.classList.contains('hide'))return;splash.classList.add('hide');document.body.style.overflow='';setTimeout(function(){splash.style.display='none'},650)}
+
+  var splash = document.getElementById('splash');
+
+  document.body.style.overflow = 'hidden';
+
+  function dismissSplash(){
+
+    if(splash.classList.contains('hide')){
+      return;
+    }
+
+    splash.classList.add('hide');
+
+    document.body.style.overflow = '';
+
+    setTimeout(function(){
+      splash.style.display = 'none';
+    },650);
+
+  }
+
   splash.addEventListener('click',dismissSplash);
+
   setTimeout(dismissSplash,2600);
+
 })();
 </script>
 
+<!-- =========================
+     FIREBASE
+========================= -->
+
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+
 <script>
-// CCPC Firebase Web App configuration
-var firebaseConfig={
-  apiKey:"AIzaSyB4IiCCQHtGeIT44n71oGlKk7PIOSWxfg8",
-  authDomain:"ccpc-1943f.firebaseapp.com",
-  databaseURL:"https://ccpc-1943f-default-rtdb.firebaseio.com",
-  projectId:"ccpc-1943f",
-  storageBucket:"ccpc-1943f.firebasestorage.app",
-  messagingSenderId:"904942754236",
-  appId:"1:904942754236:web:aecbec51d5cd0b745b33b9"
+
+var firebaseConfig = {
+
+  apiKey:
+    "AIzaSyB4IiCCQHtGeIT44n71oGlKk7PIOSWxfg8",
+
+  authDomain:
+    "ccpc-1943f.firebaseapp.com",
+
+  databaseURL:
+    "https://ccpc-1943f-default-rtdb.firebaseio.com",
+
+  projectId:
+    "ccpc-1943f",
+
+  storageBucket:
+    "ccpc-1943f.firebasestorage.app",
+
+  messagingSenderId:
+    "904942754236",
+
+  appId:
+    "1:904942754236:web:aecbec51d5cd0b745b33b9"
+
 };
-var firebaseReady=false,db=null,gamesRef=null;
-function escapeHtml(str){var d=document.createElement('div');d.textContent=str==null?'':String(str);return d.innerHTML}
-function normalizeContact(v){return v.replace(/\s+/g,'').trim()}
-function setStatus(id,msg,cls){var e=document.getElementById(id);if(e){e.textContent=msg;e.className='status-msg '+(cls||'')}}
-function initFirebase(){try{if(firebaseConfig.apiKey.indexOf('PASTE_')===0){setStatus('regStatus','Firebase config muna ang kailangan.','err');return false}if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);db=firebase.database();gamesRef=db.ref('games');firebaseReady=true;return true}catch(e){console.error(e);setStatus('regStatus','Hindi ma-connect ang Firebase. Check config.','err');return false}}
-function renderList(list){var c=document.getElementById('registeredList');if(!list.length){c.innerHTML='<p class="empty-note">No one has registered yet — be the first!</p>';return}c.innerHTML=list.map(function(r){return '<div class="registrant"><span class="name">'+escapeHtml(r.name)+'</span><span class="program">'+escapeHtml(r.program)+'</span></div>'}).join('')}
-function startLiveList(){if(!firebaseReady)return;db.ref('registrants').on('value',function(s){var d=s.val()||{},a=Object.keys(d).map(function(k){return Object.assign({id:k},d[k])});a.sort(function(x,y){return (x.createdAt||0)-(y.createdAt||0)});renderList(a)},function(e){console.error(e);document.getElementById('registeredList').innerHTML='<p class="empty-note">Database access denied. Check Firebase Rules.</p>'})}
-async function getList(){var s=await db.ref('registrants').once('value'),d=s.val()||{};return Object.keys(d).map(function(k){return Object.assign({id:k},d[k])})}
-document.getElementById('regForm').addEventListener('submit',async function(e){e.preventDefault();var name=document.getElementById('fullname').value.trim(),contact=normalizeContact(document.getElementById('contact').value),p=document.querySelector('input[name="program"]:checked'),program=p?p.value:'';if(!name||!contact||!program){setStatus('regStatus','Punan muna lahat ng fields, please.','err');return}if(!firebaseReady){setStatus('regStatus','Hindi pa naka-connect ang Firebase database.','err');return}setStatus('regStatus','Sinasave…','');try{var list=await getList();if(list.some(function(r){return normalizeContact(r.contact||'')===contact})){setStatus('regStatus',"Naka-register na ang number na 'to. Alisin muna kung gusto mong mag-ulit.",'err');return}await db.ref('registrants').push({name:name,contact:contact,program:program,createdAt:firebase.database.ServerValue.TIMESTAMP});setStatus('regStatus','Nasa listahan ka na, '+name+'! Kita tayo sa court.','ok');this.reset()}catch(err){console.error(err);setStatus('regStatus','Hindi na-save. Check Firebase Rules / connection.','err')}});
-document.getElementById('removeForm').addEventListener('submit',async function(e){e.preventDefault();var contact=normalizeContact(document.getElementById('removeContact').value);if(!contact){setStatus('removeStatus','Ilagay ang contact number na ginamit mo nung nag-register ka.','err');return}if(!firebaseReady){setStatus('removeStatus','Hindi pa naka-connect ang Firebase database.','err');return}try{var list=await getList(),m=list.find(function(r){return normalizeContact(r.contact||'')===contact});if(!m){setStatus('removeStatus',"Walang nahanap na registration sa number na 'yan.",'err');return}await db.ref('registrants/'+m.id).remove();setStatus('removeStatus',m.name+' ay natanggal na sa listahan. Sayang, sana all commitment level mo.','ok');this.reset()}catch(err){console.error(err);setStatus('removeStatus','Hindi maalis ang registration. Check Firebase Rules.','err')}});
-initFirebase();startLiveList();
+
+var firebaseReady = false;
+var db = null;
+var gamesRef = null;
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function escapeHtml(str){
+
+  var d = document.createElement('div');
+
+  d.textContent = str == null ? '' : String(str);
+
+  return d.innerHTML;
+
+}
+
+
+function normalizeContact(v){
+
+  return v.replace(/\s+/g,'').trim();
+
+}
+
+
+function setStatus(id,msg,cls){
+
+  var e = document.getElementById(id);
+
+  if(e){
+
+    e.textContent = msg;
+
+    e.className = 'status-msg ' + (cls || '');
+
+  }
+
+}
+
+
+/* =========================
+   FIREBASE INITIALIZATION
+========================= */
+
+function initFirebase(){
+
+  try{
+
+    if(
+      firebaseConfig.apiKey.indexOf('PASTE_') === 0
+    ){
+
+      setStatus(
+        'regStatus',
+        'Firebase config muna ang kailangan.',
+        'err'
+      );
+
+      return false;
+
+    }
+
+    if(!firebase.apps.length){
+
+      firebase.initializeApp(firebaseConfig);
+
+    }
+
+    db = firebase.database();
+
+    gamesRef = db.ref('games');
+
+    firebaseReady = true;
+
+    return true;
+
+  }catch(e){
+
+    console.error(e);
+
+    setStatus(
+      'regStatus',
+      'Hindi ma-connect ang Firebase. Check config.',
+      'err'
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================
+   RENDER LIST
+========================= */
+
+function renderList(list){
+
+  var c = document.getElementById('registeredList');
+
+  if(!list.length){
+
+    c.innerHTML =
+      '<p class="empty-note">' +
+      'No one has registered yet — be the first!' +
+      '</p>';
+
+    return;
+
+  }
+
+  c.innerHTML = list.map(function(r){
+
+    return (
+
+      '<div class="registrant">' +
+
+        '<span class="name">' +
+          escapeHtml(r.name) +
+        '</span>' +
+
+        '<span class="program">' +
+          escapeHtml(r.program) +
+        '</span>' +
+
+      '</div>'
+
+    );
+
+  }).join('');
+
+}
+
+
+/* =========================
+   LIVE LIST
+========================= */
+
+function startLiveList(){
+
+  if(!firebaseReady){
+    return;
+  }
+
+  db.ref('registrants').on(
+    'value',
+    function(s){
+
+      var d = s.val() || {};
+
+      var a = Object.keys(d).map(function(k){
+
+        return Object.assign(
+          {id:k},
+          d[k]
+        );
+
+      });
+
+      a.sort(function(x,y){
+
+        return (
+          (x.createdAt || 0) -
+          (y.createdAt || 0)
+        );
+
+      });
+
+      renderList(a);
+
+    },
+    function(e){
+
+      console.error(e);
+
+      document.getElementById(
+        'registeredList'
+      ).innerHTML =
+        '<p class="empty-note">' +
+        'Database access denied. Check Firebase Rules.' +
+        '</p>';
+
+    }
+  );
+
+}
+
+
+/* =========================
+   GET LIST
+========================= */
+
+async function getList(){
+
+  var s =
+    await db
+      .ref('registrants')
+      .once('value');
+
+  var d = s.val() || {};
+
+  return Object.keys(d).map(function(k){
+
+    return Object.assign(
+      {id:k},
+      d[k]
+    );
+
+  });
+
+}
+
+
+/* =========================
+   REGISTRATION
+========================= */
+
+document
+.getElementById('regForm')
+.addEventListener(
+  'submit',
+  async function(e){
+
+    e.preventDefault();
+
+    var name =
+      document
+      .getElementById('fullname')
+      .value
+      .trim();
+
+    var contact =
+      normalizeContact(
+        document
+        .getElementById('contact')
+        .value
+      );
+
+    var p =
+      document.querySelector(
+        'input[name="program"]:checked'
+      );
+
+    var program =
+      p ? p.value : '';
+
+    if(
+      !name ||
+      !contact ||
+      !program
+    ){
+
+      setStatus(
+        'regStatus',
+        'Punan muna lahat ng fields, please.',
+        'err'
+      );
+
+      return;
+
+    }
+
+    if(!firebaseReady){
+
+      setStatus(
+        'regStatus',
+        'Hindi pa naka-connect ang Firebase database.',
+        'err'
+      );
+
+      return;
+
+    }
+
+    setStatus(
+      'regStatus',
+      'Sinasave…',
+      ''
+    );
+
+    try{
+
+      var list =
+        await getList();
+
+      if(
+        list.some(function(r){
+
+          return (
+            normalizeContact(
+              r.contact || ''
+            ) === contact
+          );
+
+        })
+      ){
+
+        setStatus(
+          'regStatus',
+          "Naka-register na ang number na 'to. Alisin muna kung gusto mong mag-ulit.",
+          'err'
+        );
+
+        return;
+
+      }
+
+      await db
+        .ref('registrants')
+        .push({
+
+          name:name,
+
+          contact:contact,
+
+          program:program,
+
+          createdAt:
+            firebase.database.ServerValue.TIMESTAMP
+
+        });
+
+      setStatus(
+        'regStatus',
+        'Nasa listahan ka na, ' +
+        name +
+        '! Kita tayo sa court.',
+        'ok'
+      );
+
+      this.reset();
+
+    }catch(err){
+
+      console.error(err);
+
+      setStatus(
+        'regStatus',
+        'Hindi na-save. Check Firebase Rules / connection.',
+        'err'
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   REMOVE REGISTRATION
+========================= */
+
+document
+.getElementById('removeForm')
+.addEventListener(
+  'submit',
+  async function(e){
+
+    e.preventDefault();
+
+    var contact =
+      normalizeContact(
+        document
+        .getElementById('removeContact')
+        .value
+      );
+
+    if(!contact){
+
+      setStatus(
+        'removeStatus',
+        'Ilagay ang contact number na ginamit mo nung nag-register ka.',
+        'err'
+      );
+
+      return;
+
+    }
+
+    if(!firebaseReady){
+
+      setStatus(
+        'removeStatus',
+        'Hindi pa naka-connect ang Firebase database.',
+        'err'
+      );
+
+      return;
+
+    }
+
+    try{
+
+      var list =
+        await getList();
+
+      var m =
+        list.find(function(r){
+
+          return (
+            normalizeContact(
+              r.contact || ''
+            ) === contact
+          );
+
+        });
+
+      if(!m){
+
+        setStatus(
+          'removeStatus',
+          "Walang nahanap na registration sa number na 'yan.",
+          'err'
+        );
+
+        return;
+
+      }
+
+      await db
+        .ref(
+          'registrants/' +
+          m.id
+        )
+        .remove();
+
+      setStatus(
+        'removeStatus',
+        m.name +
+        ' ay natanggal na sa listahan. Sayang, sana all commitment level mo.',
+        'ok'
+      );
+
+      this.reset();
+
+    }catch(err){
+
+      console.error(err);
+
+      setStatus(
+        'removeStatus',
+        'Hindi maalis ang registration. Check Firebase Rules.',
+        'err'
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================
+   START
+========================= */
+
+initFirebase();
+
+startLiveList();
+
 </script>
 
 </body>
