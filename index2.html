@@ -2050,6 +2050,36 @@ Lechon manok, ngani.
 
 </div>
 
+<div class="field" id="duprJoinField" style="display:none;">
+
+  <label>
+    Sasali ka ba sa DUPR Open Play?
+  </label>
+
+  <div class="radio-group">
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="duprJoin"
+        value="Oo"
+      >
+      <span>Oo</span>
+    </label>
+
+    <label class="radio-option">
+      <input
+        type="radio"
+        name="duprJoin"
+        value="Hindi"
+      >
+      <span>Hindi</span>
+    </label>
+
+  </div>
+
+</div>
+
 <div class="field" id="duprCategoryField" style="display:none;">
 
   <label>
@@ -2523,9 +2553,16 @@ async function getList(){
    DUPR CATEGORY TOGGLE
 ========================= */
 
-var duprPrograms = [
-  'Both, sige na nga',
-  'Open Play lang, seryoso akong tao'
+var BOTH_PROGRAM =
+  'Both, sige na nga';
+
+var OPEN_PLAY_PROGRAM =
+  'Open Play lang, seryoso akong tao';
+
+var JOIN_QUESTION_PROGRAMS = [
+  'Wrong Outfit lang',
+  'Wrong Paddle lang',
+  BOTH_PROGRAM
 ];
 
 function updateDuprCategoryField(){
@@ -2535,27 +2572,68 @@ function updateDuprCategoryField(){
       'input[name="program"]:checked'
     );
 
-  var field =
+  var program =
+    p ? p.value : '';
+
+  var joinField =
+    document.getElementById(
+      'duprJoinField'
+    );
+
+  var joinInputs =
+    document.querySelectorAll(
+      'input[name="duprJoin"]'
+    );
+
+  var catField =
     document.getElementById(
       'duprCategoryField'
     );
 
-  var inputs =
+  var catInputs =
     document.querySelectorAll(
       'input[name="duprCategory"]'
     );
 
-  var show =
-    p && duprPrograms.indexOf(p.value) !== -1;
+  /* "Sasali ka ba?" shows for Wrong Outfit lang,
+     Wrong Paddle lang, and Both */
 
-  field.style.display =
-    show ? '' : 'none';
+  var showJoin =
+    JOIN_QUESTION_PROGRAMS.indexOf(program) !== -1;
 
-  inputs.forEach(function(inp){
+  joinField.style.display =
+    showJoin ? '' : 'none';
 
-    inp.required = show;
+  joinInputs.forEach(function(inp){
 
-    if(!show){
+    inp.required = showJoin;
+
+    if(!showJoin){
+      inp.checked = false;
+    }
+
+  });
+
+  var join =
+    document.querySelector(
+      'input[name="duprJoin"]:checked'
+    );
+
+  /* category shows for "Open Play lang" directly,
+     or for the other programs only when "Oo" is picked */
+
+  var showCategory =
+    program === OPEN_PLAY_PROGRAM ||
+    (showJoin && join && join.value === 'Oo');
+
+  catField.style.display =
+    showCategory ? '' : 'none';
+
+  catInputs.forEach(function(inp){
+
+    inp.required = showCategory;
+
+    if(!showCategory){
       inp.checked = false;
     }
 
@@ -2565,6 +2643,17 @@ function updateDuprCategoryField(){
 
 document
 .querySelectorAll('input[name="program"]')
+.forEach(function(inp){
+
+  inp.addEventListener(
+    'change',
+    updateDuprCategoryField
+  );
+
+});
+
+document
+.querySelectorAll('input[name="duprJoin"]')
 .forEach(function(inp){
 
   inp.addEventListener(
@@ -2608,8 +2697,20 @@ document
     var program =
       p ? p.value : '';
 
+    var needsJoin =
+      JOIN_QUESTION_PROGRAMS.indexOf(program) !== -1;
+
+    var jn =
+      document.querySelector(
+        'input[name="duprJoin"]:checked'
+      );
+
+    var duprJoin =
+      jn ? jn.value : '';
+
     var needsDuprCategory =
-      duprPrograms.indexOf(program) !== -1;
+      program === OPEN_PLAY_PROGRAM ||
+      (needsJoin && duprJoin === 'Oo');
 
     var dc =
       document.querySelector(
@@ -2623,6 +2724,7 @@ document
       !name ||
       !contact ||
       !program ||
+      (needsJoin && !duprJoin) ||
       (needsDuprCategory && !duprCategory)
     ){
 
@@ -2690,6 +2792,8 @@ document
           contact:contact,
 
           program:program,
+
+          duprJoin:duprJoin,
 
           duprCategory:duprCategory,
 
