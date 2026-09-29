@@ -683,12 +683,18 @@ ul.rules li::before{
 
 .registrant{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:6px;
   background:var(--cream);
   border-radius:12px;
   padding:12px 14px;
+}
+
+.registrant-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
   flex-wrap:wrap;
 }
 
@@ -713,6 +719,46 @@ ul.rules li::before{
   font-weight:700;
   padding:5px 10px;
   border-radius:20px;
+}
+
+.registrant .dupr.no-dupr{
+  background:#ddd;
+  color:#555;
+}
+
+.buckets-row{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+
+.bucket-group{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  flex:1;
+  min-width:0;
+}
+
+.bucket-title{
+  font-weight:800;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--ink);
+  margin-bottom:2px;
+}
+
+.bucket-count{
+  font-weight:700;
+  color:#888;
+}
+
+.total-count{
+  font-size:13px;
+  font-weight:700;
+  color:#888;
+  margin-bottom:14px;
 }
 
 .empty-note{
@@ -878,6 +924,11 @@ footer .tags{
   .wrap{
     padding-left:18px;
     padding-right:18px;
+  }
+
+  .buckets-row{
+    flex-direction:column;
+    gap:22px;
   }
 
   section{
@@ -2050,9 +2101,9 @@ Lechon manok, ngani.
       <input
         type="radio"
         name="program"
-        value="Makikinood lang"
+        value="Manonood lang"
       >
-      <span>Makikinood lang</span>
+      <span>Manonood lang</span>
     </label>
 
   </div>
@@ -2430,6 +2481,89 @@ function initFirebase(){
    RENDER LIST
 ========================= */
 
+var COSTUME_PROGRAMS = [
+  'Wrong Outfit lang',
+  'Wrong Paddle lang',
+  'Both, sige na nga'
+];
+
+var WATCH_PROGRAM =
+  'Manonood lang';
+
+function renderRegistrant(r){
+
+  var isWatcher =
+    r.program === WATCH_PROGRAM;
+
+  var duprBadge = '';
+
+  if(!isWatcher){
+
+    duprBadge =
+      r.duprCategory ?
+      (
+        '<span class="dupr">' +
+          'DUPR ' +
+          escapeHtml(r.duprCategory) +
+        '</span>'
+      ) :
+      (
+        '<span class="dupr no-dupr">' +
+          '(Hindi mag DUPR)' +
+        '</span>'
+      );
+
+  }
+
+  return (
+
+    '<div class="registrant">' +
+
+      '<span class="name">' +
+        escapeHtml(r.name) +
+      '</span>' +
+
+      '<div class="registrant-meta">' +
+
+        '<span class="program">' +
+          escapeHtml(r.program) +
+        '</span>' +
+
+        duprBadge +
+
+      '</div>' +
+
+    '</div>'
+
+  );
+
+}
+
+function renderBucket(title, items){
+
+  if(!items.length){
+    return '';
+  }
+
+  return (
+
+    '<div class="bucket-group">' +
+
+      '<div class="bucket-title">' +
+        escapeHtml(title) +
+        ' <span class="bucket-count">(' +
+        items.length +
+        ')</span>' +
+      '</div>' +
+
+      items.map(renderRegistrant).join('') +
+
+    '</div>'
+
+  );
+
+}
+
 function renderList(list){
 
   var c = document.getElementById('registeredList');
@@ -2445,36 +2579,41 @@ function renderList(list){
 
   }
 
-  c.innerHTML = list.map(function(r){
+  var costumeBucket = [];
+  var openPlayBucket = [];
+  var watchBucket = [];
 
-    return (
+  list.forEach(function(r){
 
-      '<div class="registrant">' +
+    if(COSTUME_PROGRAMS.indexOf(r.program) !== -1){
+      costumeBucket.push(r);
+    }else if(r.program === WATCH_PROGRAM){
+      watchBucket.push(r);
+    }else{
+      openPlayBucket.push(r);
+    }
 
-        '<span class="name">' +
-          escapeHtml(r.name) +
-        '</span>' +
+  });
 
-        '<span class="program">' +
-          escapeHtml(r.program) +
-        '</span>' +
-
-        (
-          r.duprCategory ?
-          (
-            '<span class="dupr">' +
-              'DUPR: ' +
-              escapeHtml(r.duprCategory) +
-            '</span>'
-          ) :
-          ''
-        ) +
-
-      '</div>'
-
-    );
-
-  }).join('');
+  c.innerHTML =
+    '<div class="total-count">' +
+      'Total interested: ' +
+      list.length +
+    '</div>' +
+    '<div class="buckets-row">' +
+      renderBucket(
+        'Wrong Outfit / Wrong Paddle',
+        costumeBucket
+      ) +
+      renderBucket(
+        'Open Play lang',
+        openPlayBucket
+      ) +
+      renderBucket(
+        'Manonood lang',
+        watchBucket
+      ) +
+    '</div>';
 
 }
 
